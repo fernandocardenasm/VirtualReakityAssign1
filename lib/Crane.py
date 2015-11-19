@@ -102,5 +102,3 @@ class Crane:
                       )
 
 
-        #self.hook_obj.sf_mat.connect_from()
-
