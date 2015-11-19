@@ -47,7 +47,8 @@ class Hook(avango.script.Script):
         self.hook_transform.Children.value = [self.hook_geometry]
 
         #self.hook_transform.Transform.value = avango.gua.make_trans_mat(0.0,TRANSLATEY,0.0)
-
+        self.sf_mat.connect_from(self.hook_transform.WorldTransform)
+        
         #No translation for this one?
 
         if PARENT_NODE is not None:
@@ -61,7 +62,7 @@ class Hook(avango.script.Script):
         
         for _node in self.TARGET_LIST: # iterate over all target nodes
             _bb = _node.BoundingBox.value # get bounding box of a node
-            #print(_node.Name.value, _bb.contains(_pos))
+            print(_node.Name.value, _bb.contains(_pos))
             
             if _bb.contains(_pos) == True: # hook position inside bounding box of this node
                 _node.Material.value.set_uniform("Color", avango.gua.Vec4(1.0,0.0,0.0,1.0)) # highlight color

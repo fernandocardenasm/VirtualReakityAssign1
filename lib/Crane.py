@@ -32,6 +32,7 @@ class Crane:
         self.base_node.Transform.value = avango.gua.make_trans_mat(0.0,-0.1,0.0)
         PARENT_NODE.Children.value.append(self.base_node)
         
+        print(TARGET_LIST)
         
         ## ToDo: init first hinge && connect rotation input 
         # ...
@@ -50,7 +51,7 @@ class Crane:
         ## ToDo: init first arm-segment
         self.arm1_obj = ArmSegment(PARENT_NODE = self.hinge1_obj.get_attached_node()
                       , DIAMETER = 0.005
-                      , LENGTH = 0.2 
+                      , LENGTH = 0.15 
                       , ROT_OFFSET_MAT = avango.gua.make_identity_mat() # the rotation offset relative to the parent coordinate system
                       )
         
@@ -96,7 +97,10 @@ class Crane:
         ## ToDo: init hook
         self.hook_obj = Hook()
         self.hook_obj = self.hook_obj.my_constructor(PARENT_NODE = self.arm3_obj.get_attached_node()
-                      , SIZE = 0.01
-                      , TARGET_LIST = []
+                      , SIZE = 0.02
+                      , TARGET_LIST = TARGET_LIST
                       )
+
+
+        #self.hook_obj.sf_mat.connect_from()
 
